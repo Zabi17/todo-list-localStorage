@@ -59,7 +59,8 @@ input[type="text"]:focus {
 }
 
 /* Submit Button */
-.delete,
+.del,
+.clean,
 input[type="submit"] {
   width: 100%;
   padding: 12px;
@@ -117,19 +118,25 @@ li input[type="checkbox"] {
 li button {
   background: transparent;
   border: none;
-  font-size: 18px;
+  font-size: 15px;
   cursor: pointer;
   color: #ff6b6b;
   transition: transform 0.2s;
 }
 
-li button:hover {
-  transform: scale(1.2);
+li input:hover {
+  transform: scale(1.3);
 }
 
 
 /* del all btn */
-.delete:hover{
+.delete{
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+  text-align: center;
+}
+.delete .del:hover{
   background: #e4163c9d;
   transform: translateY(-2px);
 }

@@ -1,19 +1,20 @@
 const input = document.querySelector("input");
 const form = document.querySelector("form");
 const ol = document.querySelector("ol");
-const del = document.querySelector(".delete");
+const clean = document.querySelector(".clean");
+const del = document.querySelector(".del")
 const existingArray = JSON.parse(localStorage.getItem("existingArray")) || [];
 
 function createListItem(value) {
   const li = document.createElement("li");
   li.innerHTML = `<input type="checkbox"> ${value}`;
 
-  const delBtn = document.createElement("button");
-  delBtn.innerText = "❌";
-  li.appendChild(delBtn);
+  const cleanBtn = document.createElement("button");
+  cleanBtn.innerText = "❌";
+  li.appendChild(cleanBtn);
 
   // ONE listener per button, closed over the specific `value`
-  delBtn.addEventListener("click", () => {
+  cleanBtn.addEventListener("click", () => {
     const index = existingArray.indexOf(value);
     if (index !== -1) {
       existingArray.splice(index, 1);
@@ -22,7 +23,7 @@ function createListItem(value) {
 
     /* Even though we create multiple <li> its not the same ! */
     /* Each has its own reference, i.e each <li> is connected to its own EventListner*/
-    /* That is the reason why every li is not deleted */
+    /* That is the reason why every li is not cleaneted */
     li.remove();
   });
 
@@ -33,10 +34,14 @@ function createListItem(value) {
 
   ol.appendChild(li);
 
-  del.addEventListener("click", () => {
+  clean.addEventListener("click", () => {
     ol.innerHTML = ""
-    localStorage.clear()
   })
+  
+  del.addEventListener("click", () => {
+    ol.innerHTML = "";
+    localStorage.clear();
+  });
 }
 
 // render existing items from storage
