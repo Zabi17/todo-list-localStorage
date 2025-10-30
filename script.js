@@ -1,6 +1,7 @@
 const input = document.querySelector("input");
 const form = document.querySelector("form");
 const ol = document.querySelector("ol");
+const del = document.querySelector(".delete");
 const existingArray = JSON.parse(localStorage.getItem("existingArray")) || [];
 
 function createListItem(value) {
@@ -31,6 +32,11 @@ function createListItem(value) {
   });
 
   ol.appendChild(li);
+
+  del.addEventListener("click", () => {
+    ol.innerHTML = ""
+    localStorage.clear()
+  })
 }
 
 // render existing items from storage
